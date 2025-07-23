@@ -1,0 +1,14 @@
+apiVersion: helm.crossplane.io/v1beta1
+kind: Release
+metadata:
+  name: podinfo
+spec:
+  forProvider:
+    chart:
+      name: podinfo
+      repository: oci://ghcr.io/stefanprodan/charts
+      version: 6.9.0
+    namespace: podinfo
+    # wait: true
+  providerConfigRef:
+    name: helm-provider

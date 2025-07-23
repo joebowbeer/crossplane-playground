@@ -1,0 +1,6 @@
+# Replace this with your XR!
+apiVersion: example.crossplane.io/v1
+kind: ArgoCluster
+metadata:
+  name: xc1
+spec: {}

@@ -1,0 +1,15 @@
+{
+    "name": "crossplane-cli",
+    "image": "mcr.microsoft.com/devcontainers/go:1-1.24-bookworm",
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "version": "latest",
+            "enableNonRootDocker": "true",
+            "moby": "false"
+        },
+        "ghcr.io/joebowbeer/devcontainers-features/crossplane:1": {
+            "channel": "master",
+            "version": "v2.0.0-rc.0.289.gb98b81cd9"
+        }
+    }
+}
