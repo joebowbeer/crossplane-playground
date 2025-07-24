@@ -11,16 +11,16 @@
             "channel": "master",
             "version": "v2.0.0-rc.0.177.g73bdf298d"
         },
-		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
-			"version": "1.33",
-			"helm": "latest",
-			"minikube": "none"
-		},
-		"ghcr.io/devcontainers-extra/features/kind:1": {
-			"version": "latest"
-		},
-		"ghcr.io/rio/features/k9s:1": {},
-		"ghcr.io/rio/features/skaffold:2": {}
+        "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+	    "version": "1.33",
+            "helm": "latest",
+            "minikube": "none"
+        },
+        "ghcr.io/devcontainers-extra/features/kind:1": {
+            "version": "latest"
+        },
+        "ghcr.io/rio/features/k9s:1": {},
+        "ghcr.io/rio/features/skaffold:2": {}
     },
     "postCreateCommand": "bash scripts/devtools_provision.sh"
 }
