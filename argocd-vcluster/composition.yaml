@@ -9,25 +9,6 @@ spec:
     kind: ArgoVCluster
   mode: Pipeline
   pipeline:
-  - step: pull-vcluster-secret
-    functionRef:
-      name: function-extra-resources
-    input:
-      apiVersion: extra-resources.fn.crossplane.io/v1beta1
-      kind: Input
-      spec:
-        extraResources:
-          - apiVersion: v1
-            kind: Secret
-            into: Secret
-            type: Selector
-            selector:
-              maxMatch: 2 # two match but only one is used
-              matchLabels:
-                - key: vcluster-name
-                  valueFromFieldPath: metadata.name
-        policy:
-          resolution: Optional
   - step: create-vcluster
     functionRef:
       name: function-go-templating
@@ -63,6 +44,44 @@ spec:
             providerConfigRef:
               name: helm-provider
             rollbackLimit: 1
+  - step: observe-vcluster-secret
+    functionRef:
+      name: function-go-templating
+    input:
+      apiVersion: gotemplating.fn.crossplane.io/v1beta1
+      kind: GoTemplate
+      source: Inline
+      inline:
+        template: |
+          {{- $xr := getCompositeResource . -}}
+          {{- $name := $xr.metadata.name -}}
+          {{- $namespace := $name -}}
+          {{- $obsName := print "obs-" $name -}}
+          {{- $vcName := print "vc-" $name -}}
+          ---
+          apiVersion: kubernetes.crossplane.io/v1alpha2
+          kind: Object
+          metadata:
+            annotations:
+              {{ setResourceNameAnnotation $obsName }}
+              {{- if empty (get (getComposedResource . $obsName) "status.atProvider.manifest.data") }}
+              gotemplating.fn.crossplane.io/ready: "False"
+              {{- end }}
+          spec:
+            managementPolicies: ["Observe"]
+            forProvider:
+              manifest:
+                apiVersion: v1
+                kind: Secret
+                metadata:
+                  name: {{ $vcName }}
+                  namespace: {{ $namespace }}
+                # data:
+                #   certificate-authority: ""
+                #   client-certificate: ""
+                #   client-key: ""
+            providerConfigRef:
+              name: kubernetes-provider
   - step: register-argocd-cluster
     functionRef:
       name: function-go-templating
@@ -72,37 +91,39 @@ spec:
       source: Inline
       inline:
         template: |
-            {{- $Secrets := index (index .context "apiextensions.crossplane.io/extra-resources") "Secret" }}
-            {{- range $i, $A := $Secrets }}
-            {{- if hasPrefix "vc-" $A.metadata.name }}
-            {{- $name := trimPrefix "vc-" $A.metadata.name }}
-            {{- $namespace := $name }}
-            ---
-            apiVersion: v1
-            kind: Secret
-            metadata:
-              annotations:
-                {{ setResourceNameAnnotation $name }}
-                gotemplating.fn.crossplane.io/ready: "True"
-              labels:
-                argocd.argoproj.io/secret-type: cluster
-              name: {{ $name }}
-              namespace: argocd
-            type: Opaque
-            stringData:
-              name: {{ $name }}
-              server: https://{{ $name }}.{{ $namespace }}:443
-              config: |
-                {
-                  "tlsClientConfig": {
-                    "insecure": false,
-                    "caData": {{ index $A.data "certificate-authority" | quote }},
-                    "certData": {{ index $A.data "client-certificate" | quote }},
-                    "keyData": {{ index $A.data "client-key" | quote }}
-                  }
+          {{- $xr := getCompositeResource . -}}
+          {{- $name := $xr.metadata.name -}}
+          {{- $namespace := $name -}}
+          {{- $obsName := print "obs-" $name -}}
+          {{- $secretName := print "xp-" $name -}}
+          {{- $res := getComposedResource . $obsName -}}
+          {{- if get $res "status.atProvider.manifest.data" }}
+          ---
+          {{- $data := $res.status.atProvider.manifest.data }}
+          apiVersion: v1
+          kind: Secret
+          metadata:
+            annotations:
+              {{ setResourceNameAnnotation $secretName }}
+              gotemplating.fn.crossplane.io/ready: "True"
+            labels:
+              argocd.argoproj.io/secret-type: cluster
+            name: {{ $secretName }}
+            namespace: argocd
+          type: Opaque
+          stringData:
+            name: {{ $name }}
+            server: https://{{ $name }}.{{ $namespace }}:443
+            config: |
+              {
+                "tlsClientConfig": {
+                  "insecure": false,
+                  "caData": {{ index $data "certificate-authority" | quote }},
+                  "certData": {{ index $data "client-certificate" | quote }},
+                  "keyData": {{ index $data "client-key" | quote }}
                 }
-            {{- end }}
-            {{- end }}
+              }
+          {{- end }}
   - step: auto-ready
     functionRef:
       name: function-auto-ready

@@ -27,6 +27,6 @@ sudo mv argocd /usr/local/bin/
 # argocd admin dashboard -n argocd
 
 helm upgrade --install crossplane -n crossplane-system --create-namespace \
-  https://charts.crossplane.io/master/crossplane-2.0.0-rc.0.289.gb98b81cd9.tgz
+  https://charts.crossplane.io/master/crossplane-2.0.0-rc.0.177.g73bdf298d.tgz
 
 echo "[END] Install dev tools"

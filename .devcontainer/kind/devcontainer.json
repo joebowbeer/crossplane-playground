@@ -9,7 +9,7 @@
         },
         "ghcr.io/joebowbeer/devcontainers-features/crossplane:1": {
             "channel": "master",
-            "version": "v2.0.0-rc.0.289.gb98b81cd9"
+            "version": "v2.0.0-rc.0.177.g73bdf298d"
         },
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
 			"version": "1.33",
