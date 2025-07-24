@@ -7,7 +7,7 @@
   * https://github.com/linkerd/linkerd2
   * https://github.com/argoproj/argo-workflows
   * etc
-4. Crossplane PRs
+4. Crossplane [PRs](https://github.com/pulls?q=is%3Aopen+is%3Apr+author%3Ajoebowbeer+archived%3Afalse+crossplane)
   * https://github.com/joebowbeer/upbound-composition-testing/tree/devcontainer1
   * https://github.com/joebowbeer/crossplane-function-kcl/tree/devcontainer
 
