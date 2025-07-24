@@ -11,8 +11,6 @@
 1. My [PRs](https://github.com/pulls?q=is%3Aopen+is%3Apr+author%3Ajoebowbeer+archived%3Afalse+crossplane) adding crossplane-featured devcontainers
    * https://github.com/joebowbeer/upbound-composition-testing/tree/devcontainer1
    * https://github.com/joebowbeer/crossplane-function-kcl/tree/devcontainer
-1. My crossplane playground
-   * https://github.com/joebowbeer/crossplane-playground
-   * Two devcontainers to choose from
-     1. [crossplane-cli](https://github.com/joebowbeer/crossplane-playground/blob/main/.devcontainer/crossplane-cli/devcontainer.json) (lightweight)
-     2. [kind](https://github.com/joebowbeer/crossplane-playground/tree/main/.devcontainer/kind/devcontainer.json) (full-featured; with kind, kubectl, helm, argocd, crossplane, k9s, ...)
+1. This repo (https://github.com/joebowbeer/crossplane-playground) provides two devcontainers
+   1. [crossplane-cli](https://github.com/joebowbeer/crossplane-playground/blob/main/.devcontainer/crossplane-cli/devcontainer.json) (lightweight)
+   2. [kind](https://github.com/joebowbeer/crossplane-playground/tree/main/.devcontainer/kind/devcontainer.json) (full-featured; with kind, kubectl, helm, argocd, crossplane, k9s, ...)
