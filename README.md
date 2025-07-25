@@ -4,6 +4,9 @@
    * My [Crossplane Feature](https://github.com/joebowbeer/devcontainers-features/blob/main/src/crossplane/README.md)
    * Can crossplane-contrib host this?
 1. Devcontainer hub site: https://containers.dev/
+   * [Developing inside a Container](https://code.visualstudio.com/docs/devcontainers/containers)
+   * [Alternate ways to install Docker](https://code.visualstudio.com/remote/advancedcontainers/docker-options)
+   * [Visual Studio Code Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 1. CNCF projects with devcontainers
    * https://github.com/linkerd/linkerd2
    * https://github.com/argoproj/argo-workflows
