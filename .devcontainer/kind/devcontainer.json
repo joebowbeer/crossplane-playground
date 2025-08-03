@@ -15,6 +15,7 @@
             // "version": "v2.0.0-rc.0.375.g1b08fd7f8"
             // "version": "v2.0.0-rc.0.378.gbd42f3bca"
             // "version": "v2.0.0-rc.0.380.g5726f564a"
+            // "version": "v2.0.0-rc.0.385.g34b1efbc1"
         },
         "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
 	    "version": "1.33",
