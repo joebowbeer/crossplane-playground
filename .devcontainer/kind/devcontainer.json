@@ -25,7 +25,8 @@
             "version": "latest"
         },
         "ghcr.io/rio/features/k9s:1": {},
-        "ghcr.io/rio/features/skaffold:2": {}
+        "ghcr.io/rio/features/skaffold:2": {},
+        "ghcr.io/rio/features/vcluster:1": {}
     },
     "postCreateCommand": "bash scripts/devtools_provision.sh"
 }

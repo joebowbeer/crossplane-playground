@@ -15,27 +15,21 @@ spec:
       apiVersion: pythonic.fn.fortra.com/v1alpha1
       kind: Composite
       composite: |
+        def argcd_secret_config(secret):
+          config = Map()
+          config.tlsClientConfig.insecure = True
+          # ArgoCD wants the base64 encoded data
+          config.tlsClientConfig.caData = secret.data['certificate-authority']
+          config.tlsClientConfig.certData = secret.data['client-certificate']
+          config.tlsClientConfig.keyData = secret.data['client-key']
+          return config
+
         class Composite(BaseComposite):
           def compose(self):
-            import base64, json
-
-            def base64_encode(s):
-              return base64.b64encode(s.encode("utf-8")).decode("utf-8")
-
-            def argcd_secret_config(secret):
-              return {
-                'tlsClientConfig': {
-                  'insecure': True,
-                  'caData': secret.data['certificate-authority'],
-                  'certData': secret.data['client-certificate'],
-                  'keyData': secret.data['client-key']
-                }
-              }
-
             name = self.metadata.name
             namespace = name
-            release = self.resources.release('helm.crossplane.io/v1beta1', 'Release')
-            release.metadata.name = name
+
+            release = self.resources.release('helm.crossplane.io/v1beta1', 'Release', name=name)
             release.spec.forProvider.chart.repository = 'https://charts.loft.sh'
             release.spec.forProvider.chart.name = 'vcluster'
             release.spec.forProvider.chart.version = '0.26.0'
@@ -51,24 +45,23 @@ spec:
             release.spec.providerConfigRef.name = 'helm-provider'
             release.spec.rollbackLimit = 1
 
-            # We will be ready when the ArgoCD secret is ready
-            self.ready = False
-
             secret_name = f'vc-{name}'
             # This will work once crossplane-sdk-python is updated to the v2 function api
             #vcluster_secrets = self.requireds.Secret('v1', 'Secret', namespace, secret_name)
             vcluster_secrets = self.requireds.Secret('v1', 'Secret', labels={'vcluster-name':name})
             for secret in vcluster_secrets:
-              if secret.metadata.name != secret_name: continue
+              if secret.metadata.name != secret_name:
+                continue
               argocd_secret = self.resources.secret('v1', 'Secret', 'argocd', secret_name)
               argocd_secret.metadata.labels['argocd.argoproj.io/secret-type'] = 'cluster'
               argocd_secret.type = 'Opaque'
               argocd_secret.data = {
-                'name': base64_encode(name),
-                'server': base64_encode(f'https://{name}.{namespace}:443'),
-                'config': base64_encode(json.dumps(argcd_secret_config(secret)))
+                'name': B64Encode(name),
+                'server': B64Encode(f'https://{name}.{namespace}:443'),
+                'config': B64Encode(format(argcd_secret_config(secret), 'json'))
               }
-              if argocd_secret.observed.data:
-                argocd_secret.ready = True
-                self.ready = True
+              argocd_secret.ready = argocd_secret.observed.data
+              break
+            else:
+              self.ready = False
             # print(str(self.response))
