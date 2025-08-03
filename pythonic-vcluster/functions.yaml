@@ -1,0 +1,24 @@
+---
+apiVersion: pkg.crossplane.io/v1beta1
+kind: Function
+metadata:
+  name: function-pythonic
+spec:
+  package: ghcr.io/fortra/function-pythonic:v0.0.1
+#   runtimeConfigRef:
+#     name: debug
+# ---
+# apiVersion: pkg.crossplane.io/v1beta1
+# kind: DeploymentRuntimeConfig
+# metadata:
+#   name: debug
+# spec:
+#   deploymentTemplate:
+#     spec:
+#       selector: {}
+#       template:
+#         spec:
+#           containers:
+#           - name: package-runtime
+#             args:
+#             - --debug

@@ -9,7 +9,7 @@
         },
         "ghcr.io/joebowbeer/devcontainers-features/crossplane:1": {
             "channel": "master",
-            "version": "v2.0.0-rc.0.177.g73bdf298d"
+            "version": "v2.0.0-rc.0.373.g8c5886280"
         }
     }
 }

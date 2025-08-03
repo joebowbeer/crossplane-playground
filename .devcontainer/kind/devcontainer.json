@@ -9,7 +9,12 @@
         },
         "ghcr.io/joebowbeer/devcontainers-features/crossplane:1": {
             "channel": "master",
-            "version": "v2.0.0-rc.0.177.g73bdf298d"
+            // "version": "v2.0.0-rc.0.177.g73bdf298d"
+            // "version": "v2.0.0-rc.0.368.g56f2f81d1"
+            "version": "v2.0.0-rc.0.373.g8c5886280"
+            // "version": "v2.0.0-rc.0.375.g1b08fd7f8"
+            // "version": "v2.0.0-rc.0.378.gbd42f3bca"
+            // "version": "v2.0.0-rc.0.380.g5726f564a"
         },
         "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
 	    "version": "1.33",

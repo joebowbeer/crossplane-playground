@@ -1,5 +1,0 @@
-apiVersion: cnp.example.org/v1alpha1
-kind: XCluster
-metadata:
-  name: cluster-1
-spec: {}

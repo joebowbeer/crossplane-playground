@@ -1,4 +1,4 @@
-apiVersion: cnp.example.org/v1alpha1
+apiVersion: example.joebowbeer.com/v1alpha1
 kind: XCluster
 metadata:
   name: xc1
