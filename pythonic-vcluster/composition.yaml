@@ -51,9 +51,12 @@ spec:
             release.spec.providerConfigRef.name = 'helm-provider'
             release.spec.rollbackLimit = 1
 
+            # We will be ready when the ArgoCD secret is ready
+            self.ready = False
+
             secret_name = f'vc-{name}'
             # This will work once crossplane-sdk-python is updated to the v2 function api
-            #vcluster_secrets = self.resources.secret('v1', 'Secret', namespace, secret_name)
+            #vcluster_secrets = self.requireds.Secret('v1', 'Secret', namespace, secret_name)
             vcluster_secrets = self.requireds.Secret('v1', 'Secret', labels={'vcluster-name':name})
             for secret in vcluster_secrets:
               if secret.metadata.name != secret_name: continue
@@ -65,4 +68,7 @@ spec:
                 'server': base64_encode(f'https://{name}.{namespace}:443'),
                 'config': base64_encode(json.dumps(argcd_secret_config(secret)))
               }
+              if argocd_secret.observed.data:
+                argocd_secret.ready = True
+                self.ready = True
             # print(str(self.response))
