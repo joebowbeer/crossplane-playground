@@ -1,0 +1,5 @@
+apiVersion: example.joebowbeer.com/v1alpha1
+kind: XCluster
+metadata:
+  name: xc2
+spec: {}
