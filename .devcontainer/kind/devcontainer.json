@@ -8,8 +8,8 @@
             "moby": "false"
         },
         "ghcr.io/joebowbeer/devcontainers-features/crossplane:1": {
-            "channel": "master",
-            "version": "v2.0.0-rc.0.396.gcfd2fdc1f"
+            "channel": "stable",
+            "version": "v2.0.0-rc.1"
         },
         "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
 	    "version": "1.33",
@@ -20,7 +20,6 @@
             "version": "latest"
         },
         "ghcr.io/rio/features/k9s:1": {},
-        "ghcr.io/rio/features/skaffold:2": {},
         "ghcr.io/rio/features/vcluster:1": {}
     },
     "postCreateCommand": "bash scripts/devtools_provision.sh"

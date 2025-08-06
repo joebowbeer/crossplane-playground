@@ -8,8 +8,8 @@
             "moby": "false"
         },
         "ghcr.io/joebowbeer/devcontainers-features/crossplane:1": {
-            "channel": "master",
-            "version": "v2.0.0-rc.0.396.gcfd2fdc1f"
+            "channel": "stable",
+            "version": "v2.0.0-rc.1"
         }
     }
 }
