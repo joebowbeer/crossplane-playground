@@ -14,7 +14,7 @@ kind create cluster --name crossplane-playground
 # helm repo add headlamp https://kubernetes-sigs.github.io/headlamp/
 # helm upgrade --install headlamp headlamp/headlamp --namespace kube-system
 
-export ARGOCD_VERSION=v3.0.11
+export ARGOCD_VERSION=v3.0.12
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/$ARGOCD_VERSION/manifests/core-install.yaml
 
