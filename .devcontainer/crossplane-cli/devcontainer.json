@@ -9,7 +9,8 @@
         },
         "ghcr.io/joebowbeer/devcontainers-features/crossplane:1": {
             "channel": "stable",
-            "version": "v2.0.0-rc.1"
+            "version": "current"
         }
     }
 }
+
