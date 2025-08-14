@@ -9,7 +9,7 @@
         },
         "ghcr.io/joebowbeer/devcontainers-features/crossplane:1": {
             "channel": "stable",
-            "version": "v2.0.0-rc.1"
+            "version": "current"
         },
         "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
 	    "version": "1.33",
@@ -24,3 +24,4 @@
     },
     "postCreateCommand": "bash scripts/devtools_provision.sh"
 }
+
