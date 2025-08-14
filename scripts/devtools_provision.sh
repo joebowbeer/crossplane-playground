@@ -14,7 +14,7 @@ kind create cluster --name crossplane-playground
 # helm repo add headlamp https://kubernetes-sigs.github.io/headlamp/
 # helm upgrade --install headlamp headlamp/headlamp --namespace kube-system
 
-export ARGOCD_VERSION=v3.0.12
+export ARGOCD_VERSION=v3.1.0
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/$ARGOCD_VERSION/manifests/core-install.yaml
 
@@ -27,6 +27,6 @@ sudo mv argocd /usr/local/bin/
 # argocd admin dashboard -n argocd
 
 helm upgrade --install crossplane -n crossplane-system --create-namespace \
-  https://charts.crossplane.io/stable/crossplane-2.0.0-rc.1.tgz
+  https://charts.crossplane.io/stable/crossplane-2.0.2.tgz
 
 echo "[END] Install dev tools"
