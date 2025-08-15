@@ -1,11 +1,11 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: xclusters.example.joebowbeer.com
+  name: vclusters.example.joebowbeer.com
 spec:
   compositeTypeRef:
     apiVersion: example.joebowbeer.com/v1alpha1
-    kind: XCluster
+    kind: VCluster
   mode: Pipeline
   pipeline:
   - step: pythonic
@@ -46,13 +46,9 @@ spec:
             release.spec.rollbackLimit = 1
 
             secret_name = f'vc-{name}'
-            # This will work once crossplane-sdk-python is updated to the v2 function api
-            #vcluster_secrets = self.requireds.Secret('v1', 'Secret', namespace, secret_name)
-            vcluster_secrets = self.requireds.Secret('v1', 'Secret', labels={'vcluster-name':name})
-            for secret in vcluster_secrets:
-              if secret.metadata.name != secret_name:
-                continue
-              argocd_secret = self.resources.secret('v1', 'Secret', 'argocd', secret_name)
+            vcluster_secret = self.requireds.vcluster_secret('v1', 'Secret', namespace, secret_name)[0]
+            if vcluster_secret:
+              argocd_secret = self.resources.argocd_secret('v1', 'Secret', 'argocd', secret_name)
               argocd_secret.metadata.labels['argocd.argoproj.io/secret-type'] = 'cluster'
               argocd_secret.type = 'Opaque'
               argocd_secret.data = {
@@ -60,8 +56,7 @@ spec:
                 'server': B64Encode(f'https://{name}.{namespace}:443'),
                 'config': B64Encode(format(argcd_secret_config(secret), 'json'))
               }
-              argocd_secret.ready = argocd_secret.observed.data
-              break
+              argocd_secret.ready = argocd_secret.observed
             else:
               self.ready = False
             # print(str(self.response))
