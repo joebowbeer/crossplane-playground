@@ -10,14 +10,14 @@ metadata:
   creationTimestamp: "2025-07-23T04:28:31Z"
   labels:
     app: vcluster
-    vcluster-name: xc1
-  name: vc-xc1
-  namespace: xc1
+    vcluster-name: vc1
+  name: vc-vc1
+  namespace: vc1
   ownerReferences:
   - apiVersion: v1
     controller: false
     kind: Service
-    name: xc1
+    name: vc1
     uid: 583d54dc-fdd6-4f0e-a6a0-91b14fe8f394
   resourceVersion: "2490"
   uid: 7fa9c286-7b9c-44dc-89b9-75fb6e662690
