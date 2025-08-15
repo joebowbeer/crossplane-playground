@@ -1,11 +1,11 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: xclusters.example.joebowbeer.com
+  name: vclusters.example.joebowbeer.com
 spec:
   compositeTypeRef:
     apiVersion: example.joebowbeer.com/v1alpha1
-    kind: XCluster
+    kind: VCluster
   mode: Pipeline
   pipeline:
   - step: pythonic
