@@ -54,7 +54,7 @@ spec:
               argocd_secret.data = {
                 'name': B64Encode(name),
                 'server': B64Encode(f'https://{name}.{namespace}:443'),
-                'config': B64Encode(format(argcd_secret_config(secret), 'json'))
+                'config': B64Encode(format(argcd_secret_config(vcluster_secret), 'json'))
               }
               argocd_secret.ready = argocd_secret.observed
             else:
