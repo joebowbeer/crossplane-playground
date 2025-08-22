@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- providers/provider-helm.yaml
+- provider-configs/helm-provider.yaml
+- functions.yaml
+- xrd.yaml
+- composition
+# - xr.yaml
+# - xr2.yaml
