@@ -1,4 +1,4 @@
-from crossplane.pythonic import B64Encode, BaseComposite, Map # pyright: ignore[reportMissingImports]
+from crossplane.pythonic import B64Encode, BaseComposite, Map
 
 class Composite(BaseComposite):
 
@@ -18,7 +18,8 @@ class Composite(BaseComposite):
         secret_name = f'vc-{name}'
         vcluster_secret = self.requireds.vcluster_secret('v1', 'Secret', namespace, secret_name)[0]
         if vcluster_secret:
-            argocd_secret = self.resources.argocd_secret('v1', 'Secret', 'default', secret_name)
+            argocd_namespace = 'argocd'
+            argocd_secret = self.resources.argocd_secret('v1', 'Secret', argocd_namespace, secret_name)
             argocd_secret.metadata.labels['argocd.argoproj.io/secret-type'] = 'cluster'
             argocd_secret.type = 'Opaque'
             argocd_secret.data.name = B64Encode(name)

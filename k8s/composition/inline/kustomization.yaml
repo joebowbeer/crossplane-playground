@@ -12,6 +12,7 @@ generatorOptions:
 resources:
 - composition.yaml
 
+# Splice vcluster.py into the Composition
 replacements:
 - source:
     kind: ConfigMap

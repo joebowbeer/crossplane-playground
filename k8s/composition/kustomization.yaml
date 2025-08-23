@@ -4,7 +4,8 @@ kind: Kustomization
 resources:
 - inline
 
-# Remove the temporary ConfigMap after use
+# Remove the temp ConfigMap after use
+# https://www.innoq.com/en/blog/2022/07/advanced-kustomize-features/
 patches:
 - patch: |-
     $patch: delete
