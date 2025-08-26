@@ -5,7 +5,7 @@
 In one terminal run
 
 ```bash
-uv run --with pip function-pythonic --insecure --debug
+uv run function-pythonic --insecure --debug
 ```
 
 In another terminal run
