@@ -1,5 +1,4 @@
-# from crossplane.pythonic import B64Encode, BaseComposite, Map
-from crossplane.pythonic import B64Encode, Map # FIXME: Temporary workaround for bug in crossplane-function-pythonic
+from crossplane.pythonic import B64Encode, BaseComposite, Map
 
 class Composite(BaseComposite):
 
@@ -8,13 +7,13 @@ class Composite(BaseComposite):
         namespace = name
 
         release = self.resources.release('helm.crossplane.io/v1beta1', 'Release', name=name)
-        release.spec.rollbackLimit = 1
         release.spec.forProvider.chart.repository = 'https://charts.loft.sh'
         release.spec.forProvider.chart.name = 'vcluster'
         release.spec.forProvider.chart.version = '0.26.0'
         release.spec.forProvider.namespace = namespace
         release.spec.forProvider.values.controlPlane.proxy.extraSANs[0] = f'{name}.{namespace}'
         release.spec.providerConfigRef.name = 'helm-provider'
+        release.spec.rollbackLimit = 1
 
         secret_name = f'vc-{name}'
         vcluster_secret = self.requireds.vcluster_secret('v1', 'Secret', namespace, secret_name)[0]

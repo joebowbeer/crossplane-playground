@@ -13,15 +13,15 @@ wheels = [
 
 [[package]]
 name = "crossplane-function-pythonic"
-version = "0.0.9.post0"
+version = "0.0.10"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "crossplane-function-sdk-python" },
     { name = "pyyaml" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/d2/93/54fb8f451528b22320ec03cadf528ef30302c7abcb03e68408169e5e807d/crossplane_function_pythonic-0.0.9.post0.tar.gz", hash = "sha256:a892e6e6a29823ec12803dc4964f7f31e63a826f770ca12272d4ac44a219148e", size = 36186, upload-time = "2025-08-26T01:26:26.689Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/8d/fe/1312b8ad29ea6ac03011247d1526a1645cdcc5058572196d83e6e1e52756/crossplane_function_pythonic-0.0.10.tar.gz", hash = "sha256:f32d8c29d240fcb5387137b8beb0833a83e9fcfbe0f6d70f69a50155515f05a1", size = 36024, upload-time = "2025-08-26T07:15:37.027Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f9/6d/1ec584f46d73dc23e577a5de3e7fc91f786b73415a240257feae6817a070/crossplane_function_pythonic-0.0.9.post0-py3-none-any.whl", hash = "sha256:1a964e1ccc54db8ce798fd64cddfce6049ccade5b0cfdcec789f9bc5f351d0e6", size = 26568, upload-time = "2025-08-26T01:26:25.119Z" },
+    { url = "https://files.pythonhosted.org/packages/e3/52/e479df9bc4e43a739c01bf4fa7b6f5b5336c5bfd25ddff9461d0b317bdc2/crossplane_function_pythonic-0.0.10-py3-none-any.whl", hash = "sha256:e7d4fbffff95e2f6460416300dd9c66f03adc338836709c3f3d0cfc15d95b62b", size = 26516, upload-time = "2025-08-26T07:15:38.258Z" },
 ]
 
 [[package]]
@@ -42,14 +42,14 @@ wheels = [
 
 [[package]]
 name = "crossplane-playground"
-version = "0.1.0"
+version = "0.2.0"
 source = { virtual = "." }
 dependencies = [
     { name = "crossplane-function-pythonic" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "crossplane-function-pythonic", specifier = ">=0.0.9.post0" }]
+requires-dist = [{ name = "crossplane-function-pythonic", specifier = ">=0.0.10" }]
 
 [[package]]
 name = "grpcio"
