@@ -5,5 +5,5 @@ description = "Crossplane playground"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "crossplane-function-pythonic>=0.0.7.post3",
+    "crossplane-function-pythonic>=0.0.9.post0",
 ]

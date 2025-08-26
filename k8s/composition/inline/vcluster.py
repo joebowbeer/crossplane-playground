@@ -1,4 +1,5 @@
-from crossplane.pythonic import B64Encode, BaseComposite, Map
+# from crossplane.pythonic import B64Encode, BaseComposite, Map
+from crossplane.pythonic import B64Encode, Map # FIXME: Temporary workaround for bug in crossplane-function-pythonic
 
 class Composite(BaseComposite):
 
