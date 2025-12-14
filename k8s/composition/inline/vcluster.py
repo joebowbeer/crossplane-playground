@@ -9,7 +9,7 @@ class Composite(BaseComposite):
         release = self.resources.release('helm.crossplane.io/v1beta1', 'Release', name=name)
         release.spec.forProvider.chart.repository = 'https://charts.loft.sh'
         release.spec.forProvider.chart.name = 'vcluster'
-        release.spec.forProvider.chart.version = '0.26.0'
+        release.spec.forProvider.chart.version = '0.30.3'
         release.spec.forProvider.namespace = namespace
         release.spec.forProvider.values.controlPlane.proxy.extraSANs[0] = f'{name}.{namespace}'
         release.spec.providerConfigRef.name = 'helm-provider'

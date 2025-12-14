@@ -1,6 +1,6 @@
 # Make targets
 
-## In crossplane-cli devcontainer
+## In default (or crossplane-cli) devcontainer
 
 In one terminal run
 
