@@ -1,18 +1,17 @@
 {
     "name": "kind",
-    "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+    "image": "mcr.microsoft.com/devcontainers/python:3-3.14-trixie",
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {
             "version": "latest",
             "enableNonRootDocker": "true",
             "moby": "false"
         },
-        "ghcr.io/joebowbeer/devcontainers-features/crossplane:1": {
-            "channel": "stable",
-            "version": "current"
+        "ghcr.io/joebowbeer/devcontainers-features/arkade-get:1": {
+            "crossplane": "latest"
         },
         "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
-	    "version": "1.33",
+            "version": "1.33",
             "helm": "latest",
             "minikube": "none"
         },
