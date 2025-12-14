@@ -29,7 +29,8 @@
             "extensions": [
                 "charliermarsh.ruff",
                 "kevinrose.vsc-python-indent",
-                "ms-python.python"
+                "ms-python.python",
+                "the0807.uv-toolkit"
             ]
         }
     },

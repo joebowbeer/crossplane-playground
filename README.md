@@ -15,6 +15,6 @@
    * https://github.com/upbound/composition-testing/pull/4
    * https://github.com/crossplane-contrib/function-kcl/pull/292
 1. This [crossplane-playground](https://github.com/joebowbeer/crossplane-playground) repo provides three devcontainers
-   1. [default](https://github.com/joebowbeer/crossplane-playground/blob/main/.devcontainer/devcontainer.json) (arkade-get)
+   1. [arkade-get](https://github.com/joebowbeer/crossplane-playground/blob/main/.devcontainer/devcontainer.json) (default)
    2. [crossplane-cli](https://github.com/joebowbeer/crossplane-playground/blob/main/.devcontainer/crossplane-cli/devcontainer.json) (lightweight)
    3. [kind](https://github.com/joebowbeer/crossplane-playground/tree/main/.devcontainer/kind/devcontainer.json) (full-featured; with kind, kubectl, helm, argocd, crossplane, k9s, ...)
