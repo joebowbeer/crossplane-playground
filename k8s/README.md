@@ -39,3 +39,10 @@ To cleanup
 ```bash
 make clean
 ```
+
+# Python Notes
+
+```bash
+uv lock --upgrade
+uv sync
+```
