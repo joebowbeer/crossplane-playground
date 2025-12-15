@@ -8,20 +8,27 @@
             "moby": "false"
         },
         "ghcr.io/joebowbeer/devcontainers-features/arkade-get:1": {
-            "crossplane": "latest"
-        },
-        "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
-            "version": "1.33",
+            "argocd": "latest",
+            "crossplane": "latest",
             "helm": "latest",
-            "minikube": "none"
+            "k9s": "latest",
+            "kind": "latest",
+            "kubectl": "latest",
+            "kustomize": "v5.7.1",
+            "vcluster": "latest"
         },
-        "ghcr.io/devcontainers-extra/features/kind:1": {
-            "version": "latest"
-        },
+        // "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+        //     "version": "1.33",
+        //     "helm": "latest",
+        //     "minikube": "none"
+        // },
+        // "ghcr.io/devcontainers-extra/features/kind:1": {
+        //     "version": "latest"
+        // },
         "ghcr.io/jsburckhardt/devcontainer-features/ruff:1": {},
-        "ghcr.io/rio/features/k9s:1": {},
-        "ghcr.io/rio/features/kustomize:1": {},
-        "ghcr.io/rio/features/vcluster:1": {},
+        // "ghcr.io/rio/features/k9s:1": {},
+        // "ghcr.io/rio/features/kustomize:1": {},
+        // "ghcr.io/rio/features/vcluster:1": {},
         "ghcr.io/va-h/devcontainers-features/uv:1": {}
     },
     "customizations": {
@@ -30,7 +37,7 @@
                 "charliermarsh.ruff",
                 "kevinrose.vsc-python-indent",
                 "ms-python.python",
-                "the0807.uv-toolkit"
+                "teticio.python-envy"
             ]
         }
     },

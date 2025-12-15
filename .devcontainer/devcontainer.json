@@ -8,10 +8,10 @@
             "moby": "false"
         },
         "ghcr.io/joebowbeer/devcontainers-features/arkade-get:1": {
-            "crossplane": "latest"
+            "crossplane": "latest",
+            "kustomize": "v5.7.1"
         },
         "ghcr.io/jsburckhardt/devcontainer-features/ruff:1": {},
-        "ghcr.io/rio/features/kustomize:1": {},
         "ghcr.io/va-h/devcontainers-features/uv:1": {}
     },
     "customizations": {
@@ -20,7 +20,7 @@
                 "charliermarsh.ruff",
                 "kevinrose.vsc-python-indent",
                 "ms-python.python",
-                "the0807.uv-toolkit"
+                "teticio.python-envy"
             ]
         }
     }

@@ -21,7 +21,7 @@
                 "charliermarsh.ruff",
                 "kevinrose.vsc-python-indent",
                 "ms-python.python",
-                "the0807.uv-toolkit"
+                "teticio.python-envy"
             ]
         }
     }

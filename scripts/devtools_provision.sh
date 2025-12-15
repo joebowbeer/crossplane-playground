@@ -16,21 +16,22 @@ kind create cluster --name crossplane-playground
 
 export ARGOCD_VERSION=v3.2.1
 
-# TODO: arkade can install argocd core? 
+# arkade install argocd does not provide argocd core option
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/$ARGOCD_VERSION/manifests/core-install.yaml
 
-# TODO: arkade get argocd
-curl -sSL -o argocd https://github.com/argoproj/argo-cd/releases/download/$ARGOCD_VERSION/argocd-linux-amd64
-chmod +x argocd
-sudo mv argocd /usr/local/bin/
+# Installed by arkade-get feature
+# curl -sSL -o argocd https://github.com/argoproj/argo-cd/releases/download/$ARGOCD_VERSION/argocd-linux-amd64
+# chmod +x argocd
+# sudo mv argocd /usr/local/bin/
 
 # kubectl config set-context --current --namespace=argocd
 # argocd login --core
 # argocd admin dashboard -n argocd
 
-# TODO: arkade install crossplane
+# arkade install crossplane
+# TODO: https://github.com/alexellis/arkade/issues/1239
 helm upgrade --install crossplane -n crossplane-system --create-namespace \
-  https://charts.crossplane.io/stable/crossplane-2.0.2.tgz
+  https://charts.crossplane.io/stable/crossplane-2.1.3.tgz
 
 echo "[END] Install dev tools"
